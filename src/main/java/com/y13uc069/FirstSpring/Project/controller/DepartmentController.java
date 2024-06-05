@@ -2,7 +2,6 @@ package com.y13uc069.FirstSpring.Project.controller;
 
 import com.y13uc069.FirstSpring.Project.entity.Department;
 import com.y13uc069.FirstSpring.Project.service.DepartmentService;
-import com.y13uc069.FirstSpring.Project.service.DepartmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +32,10 @@ public class DepartmentController {
     public String deleteDepartmentById(@PathVariable("id") long id) {
         departmentService.deleteDepartmentById(id);
         return String.format("Department with id = %2d deleted", id);
+    }
+
+    @PutMapping("/departments/{id}")
+    public Department updateDepartment(@PathVariable("id") long id, @RequestBody Department department) {
+        return departmentService.updateDepartment(id, department);
     }
 }
